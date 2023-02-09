@@ -14,16 +14,18 @@ module.exports = {
                 return true
             })
         } catch (err) {
+            console.log(err)
             return err
         }
     },
 
     // function to edit testimonial
-    editTestimonial: async ({id, name, description}) => {
+    editTestimonial: async ({id, name, post, description}) => {
         try {
             await testimonial.updateOne({_id: id},
                 {$set: {
                     name,
+                    post,
                     description,
                 }}).then( res => {
                     if(res.modifiedCount === 1) return true
@@ -36,15 +38,16 @@ module.exports = {
     // function to fetch all testimonial
     fetchTestimonial: async () => {
         try {
-            return await testimonial.find()
+            return await testimonial.find({active: true})
         } catch (error) {
+            console.log(error)
             return error;
         }
     },
     // function to delete testimonial
     deleteTestimonial: async (id) => {
         try {
-            return await testimonial.deleteOne({_id: id});
+            return await testimonial.updateOne({_id: id},{$set: { active: false }});
         } catch (error) {
             return error;
         }

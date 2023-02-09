@@ -6,8 +6,7 @@ const testimonialSchema = mongoose.Schema({
         required: true,
     },
     photo: {
-        type: String,
-        required: true,
+        type: String
     },
     post: {
         type: String,

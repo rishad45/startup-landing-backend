@@ -7,9 +7,12 @@ const bodyParser = require('body-parser')
 
 const connectToDB = require('./connectDB');
 
+const allowedOrigins = [
+    'http://localhost:3000'
+]
 app.use(cors(
     {
-        origin: "*", // allow the server to accept request from different origin
+        origin: allowedOrigins, // allow the server to accept request from different origin
         methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
         credentials: true // allow session cookie from browser to pass through
     }
