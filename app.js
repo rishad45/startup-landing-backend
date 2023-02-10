@@ -8,7 +8,8 @@ const bodyParser = require('body-parser')
 const connectToDB = require('./connectDB');
 
 const allowedOrigins = [
-    'http://localhost:3000'
+    'http://localhost:3000',
+    'https://landstartup.netlify.app'
 ]
 app.use(cors(
     {
