@@ -38,7 +38,7 @@ module.exports = {
     // function to fetch all testimonial
     fetchTestimonial: async () => {
         try {
-            return await testimonial.find()
+            return await testimonial.find({active: true})
         } catch (error) {
             console.log(error)
             return error;
@@ -52,7 +52,4 @@ module.exports = {
             return error;
         }
     }
-
-
-
 }

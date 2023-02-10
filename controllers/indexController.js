@@ -46,6 +46,7 @@ module.exports = {
                 return res.status(200).send({message: 'Fetched succefully', result})
             })
         } catch (error) {
+            console.log('error is',error);
            return res.status(500).send({message: 'Internal server error'})
         }
     },
