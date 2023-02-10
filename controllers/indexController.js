@@ -54,9 +54,11 @@ module.exports = {
     // API to edit testimonials
     editTestimonial: async (req,res) => {
         try {
+            console.log('body', req.body)
             await repository.editTestimonial(req.body)
             .then( result => {
-                if(result?.modifiedCount === 1) return res.status(200).send({message: 'Testimonial succefully Edited'})
+                console.log(result)
+                if(result.modifiedCount === 1) return res.status(200).send({message: 'Testimonial succefully Edited'})
                 return res.status(403).send({message: `can't Edit Testimonial`})
             })
         } catch (error) {
@@ -69,6 +71,7 @@ module.exports = {
         try {
             await repository.deleteTestimonial(req.body.id)
             .then( result => {
+                console.log('res', result)
                 if(result?.modifiedCount === 1) return res.status(200).send({message: 'Testimonial succefully deleted'})
                 return res.status(403).send({message: `can't delete Testimonial`})
             })

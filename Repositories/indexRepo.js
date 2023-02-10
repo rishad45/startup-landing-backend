@@ -22,15 +22,12 @@ module.exports = {
     // function to edit testimonial
     editTestimonial: async ({id, name, post, description}) => {
         try {
-            await testimonial.updateOne({_id: id},
+            return await testimonial.updateOne({_id: id},
                 {$set: {
                     name,
                     post,
                     description,
-                }}).then( res => {
-                    if(res.modifiedCount === 1) return true
-                    return false
-                })
+                }})
         } catch (error) {
             return error;
         }
@@ -46,6 +43,7 @@ module.exports = {
     },
     // function to delete testimonial
     deleteTestimonial: async (id) => {
+        console.log(id)
         try {
             return await testimonial.updateOne({_id: id},{$set: { active: false }});
         } catch (error) {
